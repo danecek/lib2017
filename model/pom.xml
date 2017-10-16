@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>biapj</groupId>
         <artifactId>lib2017</artifactId>
+        <groupId>biapj</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>utils</artifactId>
-  
+
+    <artifactId>model</artifactId>
     <packaging>bundle</packaging>
-    <name>utils 2017</name>
-  
+
+    <name>model 2017</name>
     <build>
         <plugins>
             <plugin>
@@ -19,11 +18,12 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>lib2017.utils.Activator</Bundle-Activator>
+                        <Bundle-Activator>lib2017.model.Activator</Bundle-Activator>
                         <Export-Package />
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
