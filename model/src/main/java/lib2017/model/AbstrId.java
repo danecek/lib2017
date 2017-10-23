@@ -10,18 +10,18 @@ public class AbstrId<T extends AbstrId> implements Comparable<T> {
     public AbstrId(int id) {
         this.id = id;
     }
-    
-     final int id;
+
+    final int id;
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object that) {
+        if (that == null) {
             return false;
         }
-//        if (obj.getClass() != BookId.class) {
-//            return false;
-//        }
-        T bookId = (T) obj;
+        if (this.getClass() == that.getClass()) {
+            return false;
+        }
+        T bookId = (T) that;
         return compareTo(bookId) == 0;
     }
 
@@ -33,12 +33,12 @@ public class AbstrId<T extends AbstrId> implements Comparable<T> {
     }
 
     @Override
-    public int compareTo(T o) {
-        return id - o.id;
+    public int compareTo(T that) {
+        return this.id - that.id;
     }
 
     public int getId() {
         return id;
     }
-    
+
 }
