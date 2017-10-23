@@ -18,12 +18,12 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>lib2017.help.Activator</Bundle-Activator>
+                        <Bundle-Activator>lib2017.modultemplate.Activator</Bundle-Activator>
                         <Export-Package />
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    <name>modultemplate</name>
+    <name>modultemplate 2017</name>
 </project>
