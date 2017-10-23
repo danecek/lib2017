@@ -14,7 +14,7 @@ public class Activator implements BundleActivator {
 
     @Override
     public void start(BundleContext bc) throws Exception {
-        LOG.info(Messages.Book.getMessage());
+        LOG.info(Messages.Library.getMessage());
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     private static final Logger LOG = Logger.getLogger(Activator.class.getName());

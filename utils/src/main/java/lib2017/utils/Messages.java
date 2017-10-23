@@ -5,16 +5,19 @@
  */
 package lib2017.utils;
 
+import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public enum Messages {
+
     Library,
     Book;
+    Locale l = new Locale("cs");//Locale.US;
 
     public String getMessage() {
-        ResourceBundle bundle = ResourceBundle.getBundle("lib2017.utils.messages");
+        ResourceBundle bundle = ResourceBundle.getBundle("lib2017.utils.messages", l);
         String mess;
         try {
             mess = bundle.getString(this.name());
