@@ -12,6 +12,11 @@ public class MyBook {
         this.id = id;
         this.title = title;
     }   
+
+    @Override
+    public String toString() {
+        return "MyBook{" + "id=" + id + ", title=" + title + '}';
+    }
     
 
     public BookId getId() {

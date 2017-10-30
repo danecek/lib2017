@@ -19,7 +19,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>lib2017.model.Activator</Bundle-Activator>
-                        <Export-Package />
+                        <Export-Package >lib2017.model</Export-Package>
+                        <Private-Package>lib2017.model.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

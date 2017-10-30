@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>modultemplate</artifactId>
+    <packaging>bundle</packaging>
+    <name>modultemplate 2017</name>
 
     <build>
         <plugins>
@@ -25,5 +27,5 @@
             </plugin>
         </plugins>
     </build>
-    <name>modultemplate 2017</name>
+
 </project>

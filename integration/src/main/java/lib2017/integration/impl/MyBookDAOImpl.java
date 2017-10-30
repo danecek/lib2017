@@ -22,8 +22,7 @@ public class MyBookDAOImpl implements MyBookDAO {
     public static MyBookDAOImpl instance = new MyBookDAOImpl();
 
     private MyBookDAOImpl() {
-    }
-    
+    }    
 
     private NavigableMap<BookId, MyBook> books = new TreeMap<>();
 
@@ -35,7 +34,7 @@ public class MyBookDAOImpl implements MyBookDAO {
         } else {
             lk = books.lastKey().getId();
         }
-        MyBook book = new MyBook(new BookId(lk), title);
+        MyBook book = new MyBook(new BookId(lk + 1), title);
         books.put(book.getId(), book);
     }
 

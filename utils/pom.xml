@@ -20,7 +20,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>lib2017.utils.Activator</Bundle-Activator>
-                        <Export-Package />
+                        <Export-Package >lib2017.utils</Export-Package>
+                        <Private-Package>lib2017.utils.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

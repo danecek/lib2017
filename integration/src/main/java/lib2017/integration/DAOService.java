@@ -5,10 +5,21 @@
  */
 package lib2017.integration;
 
+import lib2017.integration.impl.DAOServiceDefaultImpl;
+
 public abstract class DAOService {
+
+    static private DAOService instance;
+
+    public static DAOService service() {
+        if (instance == null) {
+            instance = new DAOServiceDefaultImpl();
+        }
+        return instance;
+
+    }
 
     public abstract MyBookDAO getMyBookDAO();
 
-    public abstract MyReaderDAO getMyReaderDAO();
-
+    //   public abstract MyReaderDAO getMyReaderDAO();
 }
