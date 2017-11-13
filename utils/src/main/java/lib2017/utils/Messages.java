@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public enum Messages {
 
     Library,
-    Book;
+    Book, FILE, BOOKS, EXIT, TITLE, CREATE_BOOK, EMPTY_TITLE, AUTHOR, EMPTY_AUTHOR;
     Locale l = new Locale("cs");//Locale.US;
 
     public String getMessage() {
@@ -22,8 +22,8 @@ public enum Messages {
         try {
             mess = bundle.getString(this.name());
         } catch (MissingResourceException mre) {
-            LOG.warning(mre.toString());
-            mess = name();
+            // LOG.warning(mre.toString());
+            mess = name().replace("_", " ");
         }
         return mess;
 

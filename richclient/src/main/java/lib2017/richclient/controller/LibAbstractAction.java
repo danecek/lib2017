@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableBooleanValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 
 public abstract class LibAbstractAction {
 
@@ -24,6 +25,18 @@ public abstract class LibAbstractAction {
 
     public Button createButton() {
         Button bt = new Button(name);
+        bt.disableProperty().bind(disable);
+        bt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                execute();
+            }
+        });
+        return bt;
+    }
+
+    public MenuItem createMenuItem() {
+        MenuItem bt = new MenuItem(name);
         bt.disableProperty().bind(disable);
         bt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
