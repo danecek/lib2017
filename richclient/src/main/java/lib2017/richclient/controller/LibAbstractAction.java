@@ -15,7 +15,7 @@ import javafx.scene.control.MenuItem;
 public abstract class LibAbstractAction {
 
     private String name;
-    private ObservableBooleanValue disable = new SimpleBooleanProperty(false);
+    protected SimpleBooleanProperty disable = new SimpleBooleanProperty(false);
 
     public LibAbstractAction(String name) {
         this.name = name;

@@ -6,17 +6,27 @@
 package lib2017.integration;
 
 import lib2017.integration.impl.DAOServiceDefaultImpl;
+import org.osgi.util.tracker.ServiceTracker;
 
 public abstract class DAOService {
+
+    public static void setSt(ServiceTracker<DAOService, DAOService> aSt) {
+        st = aSt;
+    }
+
+    private static ServiceTracker<DAOService, DAOService> st;
 
     static private DAOService instance;
 
     public static DAOService service() {
         if (instance == null) {
-            instance = new DAOServiceDefaultImpl();
+            if (st != null)
+               instance = st.getService();
+            if (instance == null) {
+                instance = new DAOServiceDefaultImpl();
+            }
         }
         return instance;
-
     }
 
     public abstract MyBookDAO getMyBookDAO();

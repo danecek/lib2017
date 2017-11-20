@@ -18,6 +18,7 @@
         <module>integration</module>
         <module>business</module>
         <module>richclient</module>
+        <module>derbyDAO</module>
     </modules>
     <dependencies>
         <dependency>

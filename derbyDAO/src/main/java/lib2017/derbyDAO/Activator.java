@@ -1,14 +1,14 @@
-package lib2017.integration;
+package lib2017.derbyDAO;
 
+import lib2017.derbyDAO.impl.DerbyDAOService;
+import lib2017.integration.DAOService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.util.tracker.ServiceTracker;
 
-public class Activator implements BundleActivator {
-
+public class Activator implements BundleActivator{
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        DAOService.setSt(new ServiceTracker<>(bundleContext, DAOService.class.getName(), null));
+       bundleContext.registerService(DAOService.class.getName(), new DerbyDAOService(), null);
     }
 
     @Override

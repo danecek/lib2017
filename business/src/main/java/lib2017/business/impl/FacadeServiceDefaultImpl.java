@@ -5,6 +5,7 @@ import java.util.List;
 import lib2017.business.FacadeService;
 import lib2017.integration.DAOService;
 import lib2017.model.MyBook;
+import lib2017.utils.LibException;
 
 
 public class FacadeServiceDefaultImpl extends FacadeService {
@@ -13,13 +14,20 @@ public class FacadeServiceDefaultImpl extends FacadeService {
     }
 
     @Override
-    public void createBook(String title) {
+    public void createBook(String title) throws LibException {
         DAOService.service().getMyBookDAO().create(title);
     }
 
     @Override
-    public List<MyBook> allBooks() {
+    public List<MyBook> allBooks() throws LibException {
         return DAOService.service().getMyBookDAO().all();
     }
+
+    @Override
+    public void deleteBook(MyBook book) throws LibException {
+        DAOService.service().getMyBookDAO().delete(book);
+    }
+    
+    
     
 }

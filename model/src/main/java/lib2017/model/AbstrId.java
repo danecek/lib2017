@@ -18,7 +18,7 @@ public class AbstrId<T extends AbstrId> implements Comparable<T> {
         if (that == null) {
             return false;
         }
-        if (this.getClass() == that.getClass()) {
+        if (this.getClass() != that.getClass()) {
             return false;
         }
         T bookId = (T) that;

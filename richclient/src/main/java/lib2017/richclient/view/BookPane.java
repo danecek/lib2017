@@ -7,11 +7,11 @@ package lib2017.richclient.view;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
@@ -20,6 +20,7 @@ import lib2017.business.FacadeService;
 import lib2017.model.MyBook;
 import lib2017.richclient.LibStateObservable;
 import lib2017.richclient.MainWindow;
+import lib2017.richclient.controller.DeleteBookAction;
 import lib2017.utils.LibException;
 import lib2017.utils.Messages;
 
@@ -32,18 +33,25 @@ public class BookPane extends TitledPane implements Observer {
         LibStateObservable.instance.addObserver(this);
         setContent(createContent());
     }
+    TableView<MyBook> tv;
 
-    private Node createContent() {
-        TableView<MyBook> tv = new TableView<MyBook>();
+    private TableView createContent() {
+        tv = new TableView<MyBook>();
         TableColumn<MyBook, Object> titleCol = new TableColumn<MyBook, Object>(Messages.TITLE.getMessage());
         titleCol.setCellValueFactory(new PropertyValueFactory<MyBook, Object>("title"));
         tv.getColumns().add(titleCol);
         tv.setItems(books);
+        tv.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        getSelectedBooks().addListener(DeleteBookAction.instance);
         return tv;
     }
 
     public void refresh() throws LibException {
         books.setAll(FacadeService.service().allBooks());
+    }
+
+    public ObservableList<MyBook> getSelectedBooks() {
+        return tv.getSelectionModel().getSelectedItems();
     }
 
     @Override

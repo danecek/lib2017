@@ -6,6 +6,7 @@
 package lib2017.richclient.view;
 
 import javafx.scene.layout.HBox;
+import lib2017.richclient.controller.DeleteBookAction;
 import lib2017.richclient.controller.ExitAction;
 
 /**
@@ -15,8 +16,8 @@ import lib2017.richclient.controller.ExitAction;
 public class LibToolBar extends HBox {
 
     public LibToolBar() {
-        super(ExitAction.instance.createButton());
+        super(ExitAction.instance.createButton(),
+                DeleteBookAction.instance.createButton());
     }
-    
-    
+
 }

@@ -29,5 +29,7 @@ public abstract class FacadeService {
     public abstract void createBook(String title) throws LibException;
 
     public abstract List<MyBook> allBooks() throws LibException;
+     
+    public abstract void deleteBook(MyBook book) throws LibException;
 
 }

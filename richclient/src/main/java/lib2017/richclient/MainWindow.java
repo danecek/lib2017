@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import lib2017.business.FacadeService;
+import lib2017.model.MyBook;
 import lib2017.richclient.controller.ExitAction;
 import lib2017.richclient.view.BookPane;
 import lib2017.richclient.view.LibMenuBar;
@@ -35,6 +36,7 @@ public class MainWindow extends Stage {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(ex.toString());
     }
+    BookPane bookPane;
 
     public MainWindow() {
         instance = this;
@@ -45,10 +47,14 @@ public class MainWindow extends Stage {
                 ExitAction.instance.execute();
             }
         });
-        BookPane bookPane = new BookPane();
+        bookPane = new BookPane();
         Parent root = new VBox(new LibMenuBar(), new LibToolBar(), bookPane);
         Scene s = new Scene(root, 800, 400);
         setScene(s);
         show();
+    }
+
+    public BookPane getBookPane() {
+        return bookPane;
     }
 }

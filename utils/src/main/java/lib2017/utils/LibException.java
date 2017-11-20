@@ -5,6 +5,8 @@
  */
 package lib2017.utils;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author danecek
@@ -26,5 +28,9 @@ public class LibException extends Exception {
      */
     public LibException(String msg) {
         super(msg);
+    }
+    
+    public LibException(Exception ex) {
+        super(ex);
     }
 }

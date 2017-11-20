@@ -5,19 +5,10 @@
  */
 package lib2017.richclient.controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import lib2017.richclient.MainWindow;
 import lib2017.richclient.dialogs.CreateBookDialog;
 import lib2017.utils.Messages;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.BundleException;
 
-/**
- *
- * @author danecek
- */
+
 public class CreateBookAction extends LibAbstractAction {
 
     public static CreateBookAction instance = new CreateBookAction();

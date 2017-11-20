@@ -7,14 +7,15 @@ package lib2017.richclient.view;
 
 import javafx.scene.control.Menu;
 import lib2017.richclient.controller.CreateBookAction;
+import lib2017.richclient.controller.DeleteBookAction;
 import lib2017.utils.Messages;
-
 
 public class BookMenu extends Menu {
 
     public BookMenu() {
         super(Messages.BOOKS.getMessage());
-        getItems().addAll(CreateBookAction.instance.createMenuItem());
+        getItems().addAll(CreateBookAction.instance.createMenuItem(),
+                DeleteBookAction.instance.createMenuItem());
     }
-    
+
 }

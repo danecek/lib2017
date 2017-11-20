@@ -7,12 +7,17 @@ package lib2017.integration;
 
 import java.util.List;
 import lib2017.model.MyBook;
+import lib2017.utils.LibException;
 
 /**
  *
  * @author danecek
  */
 public interface MyBookDAO {
-    void create(String title);
-    List<MyBook>all();
+
+    void create(String title) throws LibException;
+    
+    void delete(MyBook book) throws LibException;
+
+    List<MyBook> all() throws LibException;
 }

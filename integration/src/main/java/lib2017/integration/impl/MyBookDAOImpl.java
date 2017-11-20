@@ -12,6 +12,7 @@ import java.util.TreeMap;
 import lib2017.integration.MyBookDAO;
 import lib2017.model.BookId;
 import lib2017.model.MyBook;
+import lib2017.utils.LibException;
 
 /**
  *
@@ -41,6 +42,11 @@ public class MyBookDAOImpl implements MyBookDAO {
     @Override
     public List<MyBook> all() {
         return new ArrayList(books.values());
+    }
+
+    @Override
+    public void delete(MyBook book) throws LibException {
+        books.remove(book.getId());
     }
 
 }
