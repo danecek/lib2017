@@ -19,23 +19,23 @@ import lib2017.utils.LibException;
  * @author danecek
  */
 public class MyBookDAOImpl implements MyBookDAO {
-    
+
     public static MyBookDAOImpl instance = new MyBookDAOImpl();
 
     private MyBookDAOImpl() {
-    }    
+    }
 
     private NavigableMap<BookId, MyBook> books = new TreeMap<>();
 
     @Override
-    public void create(String title) {
+    public void create(String author, String title) {
         int lk = 0;
         if (books.isEmpty()) {
             lk = 0;
         } else {
             lk = books.lastKey().getId();
         }
-        MyBook book = new MyBook(new BookId(lk + 1), title);
+        MyBook book = new MyBook(lk + 1, author, title);
         books.put(book.getId(), book);
     }
 

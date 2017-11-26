@@ -15,8 +15,8 @@ import lib2017.utils.LibException;
  */
 public interface MyBookDAO {
 
-    void create(String title) throws LibException;
-    
+    void create(String author, String title) throws LibException;
+
     void delete(MyBook book) throws LibException;
 
     List<MyBook> all() throws LibException;

@@ -22,7 +22,7 @@ public class MyBookDAOTest {
     @org.junit.Test
     public void testCreate() {
         MyBookDAOImpl bdao = MyBookDAOImpl.instance;
-        bdao.create("Maj");
+        bdao.create("Macha", "Maj");
         Assert.assertTrue(bdao.all().get(0).getTitle().equals("Maj"));    
     }
 

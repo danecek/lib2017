@@ -6,22 +6,24 @@
 package lib2017.integration;
 
 import lib2017.integration.impl.DAOServiceDefaultImpl;
+import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
 public abstract class DAOService {
 
-    public static void setSt(ServiceTracker<DAOService, DAOService> aSt) {
-        st = aSt;
-    }
+    static private BundleContext bc;
 
-    private static ServiceTracker<DAOService, DAOService> st;
+    public static void setSt(BundleContext bc) {
+        DAOService.bc = bc;
+    }
 
     static private DAOService instance;
 
     public static DAOService service() {
         if (instance == null) {
-            if (st != null)
-               instance = st.getService();
+            ServiceTracker st = new ServiceTracker(bc, DAOService.class.getName(), null);
+            st.open();
+            instance = (DAOService) st.getService();
             if (instance == null) {
                 instance = new DAOServiceDefaultImpl();
             }
