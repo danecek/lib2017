@@ -5,15 +5,14 @@
  */
 package lib2017.richclient.dialogs;
 
-import java.nio.file.Path;
 import java.util.Optional;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -27,7 +26,7 @@ import lib2017.utils.Messages;
  *
  * @author danecek
  */
-public class CreateBookDialog extends Dialog<ButtonType> implements ChangeListener<Object> {
+public final class CreateBookDialog extends Dialog<ButtonType> implements ChangeListener<Object> {
 
     private TextField title;
     private TextField author;
@@ -37,7 +36,7 @@ public class CreateBookDialog extends Dialog<ButtonType> implements ChangeListen
         setTitle(Messages.CREATE_BOOK.getMessage());
         getDialogPane().setContent(createContent());
         getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL, ButtonType.OK);
-        errorPane.setStyle("text:red");
+        errorPane.setStyle(" -fx-text-fill:red; -fx-font-weight:bold");
         validate();
     }
 
@@ -49,6 +48,9 @@ public class CreateBookDialog extends Dialog<ButtonType> implements ChangeListen
 
     protected Node createContent() {
         GridPane gb = new GridPane();
+        gb.setPadding(new Insets(5));
+        gb.setHgap(5);
+        gb.setVgap(5);
         gb.add(new Label(Messages.AUTHOR.getMessage() + ":"), 0, 0);
         gb.add(author = createTF(), 1, 0);
         gb.add(new Label(Messages.TITLE.getMessage() + ":"), 0, 1);
@@ -65,7 +67,7 @@ public class CreateBookDialog extends Dialog<ButtonType> implements ChangeListen
             if (bt.get() == ButtonType.CANCEL) {
                 return;
             }
-            FacadeService.service().createBook(title.getText());
+            FacadeService.service().createBook(author.getText(), title.getText());
             LibStateObservable.instance.notif();
         } catch (LibException ex) {
             MainWindow.error(ex);

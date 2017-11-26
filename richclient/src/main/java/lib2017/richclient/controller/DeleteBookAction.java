@@ -15,7 +15,7 @@ import lib2017.richclient.MainWindow;
 import lib2017.utils.LibException;
 import lib2017.utils.Messages;
 
-public class DeleteBookAction extends LibAbstractAction implements ListChangeListener<MyBook>{
+public class DeleteBookAction extends LibAbstractAction implements ListChangeListener<MyBook> {
 
     private static final Logger LOG = Logger.getLogger(DeleteBookAction.class.getName());
 
@@ -23,12 +23,12 @@ public class DeleteBookAction extends LibAbstractAction implements ListChangeLis
 
     public DeleteBookAction() {
         super(Messages.DELETE_BOOK.getMessage());
+        disable.set(true);
     }
 
     @Override
     public void execute() {
         try {
-            LOG.info("");
             for (MyBook book : MainWindow.instance.getBookPane().getSelectedBooks()) {
                 FacadeService.service().deleteBook(book);
             }

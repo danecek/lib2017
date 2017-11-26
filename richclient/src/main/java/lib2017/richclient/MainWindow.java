@@ -5,18 +5,15 @@
  */
 package lib2017.richclient;
 
-import javafx.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import lib2017.business.FacadeService;
-import lib2017.model.MyBook;
 import lib2017.richclient.controller.ExitAction;
 import lib2017.richclient.view.BookPane;
 import lib2017.richclient.view.LibMenuBar;
@@ -52,6 +49,13 @@ public class MainWindow extends Stage {
         Scene s = new Scene(root, 800, 400);
         setScene(s);
         show();
+        try {
+            bookPane.refresh();
+        } catch (LibException ex) {
+            error(ex);
+            //           Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public BookPane getBookPane() {

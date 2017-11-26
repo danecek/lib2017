@@ -5,19 +5,17 @@
  */
 package lib2017.model;
 
-
 public class MyBook {
 
-    public MyBook(BookId id, String title) {
-        this.id = id;
-        this.title = title;
-    }   
+    private BookId id;
+    private String title;
+    private String author;
 
-    @Override
-    public String toString() {
-        return "MyBook{" + "id=" + id + ", title=" + title + '}';
+    public MyBook(int id, String author, String title) {
+        this.id = new BookId(id);
+        this.title = title;
+        this.author = author;
     }
-    
 
     public BookId getId() {
         return id;
@@ -26,8 +24,33 @@ public class MyBook {
     public String getTitle() {
         return title;
     }
-    
-    BookId id;
-    String title;
-    
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(BookId id) {
+        this.id = id;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @return the author
+     */
+    public String getAuthor() {
+        return author;
+    }
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
 }

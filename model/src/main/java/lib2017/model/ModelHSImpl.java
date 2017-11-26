@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lib2017.richclient.view;
+package lib2017.model;
 
-import javafx.geometry.Insets;
-import javafx.scene.control.MenuBar;
+import lib2017.utils.HelloService;
+
 
 /**
  *
  * @author danecek
  */
-public class LibMenuBar extends MenuBar {
+public class ModelHSImpl implements HelloService {
 
-    public LibMenuBar() {
-        super(new FileMenu(), new BookMenu());
+    @Override
+    public String hello(String key) {
+        return "model " + key;
     }
 
 }

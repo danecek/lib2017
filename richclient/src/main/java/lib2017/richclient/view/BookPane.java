@@ -8,9 +8,7 @@ package lib2017.richclient.view;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,25 +22,29 @@ import lib2017.richclient.controller.DeleteBookAction;
 import lib2017.utils.LibException;
 import lib2017.utils.Messages;
 
-public class BookPane extends TitledPane implements Observer {
+public final class BookPane extends TitledPane implements Observer {
 
-    ObservableList<MyBook> books = FXCollections.observableArrayList();
+    private ObservableList<MyBook> books = FXCollections.observableArrayList();
+    private TableView<MyBook> bookTable;
 
     public BookPane() {
         super(Messages.BOOKS.getMessage(), null);
+        setContent(bookTable = createContent());
+        bookTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        getSelectedBooks().addListener(DeleteBookAction.instance);
         LibStateObservable.instance.addObserver(this);
-        setContent(createContent());
     }
-    TableView<MyBook> tv;
 
     private TableView createContent() {
-        tv = new TableView<MyBook>();
-        TableColumn<MyBook, Object> titleCol = new TableColumn<MyBook, Object>(Messages.TITLE.getMessage());
-        titleCol.setCellValueFactory(new PropertyValueFactory<MyBook, Object>("title"));
-        tv.getColumns().add(titleCol);
+        TableView<MyBook> tv = new TableView<>();
+        TableColumn<MyBook, Object> idCol = new TableColumn<>(Messages.ID.getMessage());
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn<MyBook, Object> authorCol = new TableColumn<>(Messages.AUTHOR.getMessage());
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
+        TableColumn<MyBook, Object> titleCol = new TableColumn<>(Messages.TITLE.getMessage());
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        tv.getColumns().addAll(idCol, authorCol, titleCol);
         tv.setItems(books);
-        tv.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        getSelectedBooks().addListener(DeleteBookAction.instance);
         return tv;
     }
 
@@ -51,7 +53,7 @@ public class BookPane extends TitledPane implements Observer {
     }
 
     public ObservableList<MyBook> getSelectedBooks() {
-        return tv.getSelectionModel().getSelectedItems();
+        return bookTable.getSelectionModel().getSelectedItems();
     }
 
     @Override

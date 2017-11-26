@@ -26,7 +26,7 @@ public abstract class FacadeService {
 
     }
 
-    public abstract void createBook(String title) throws LibException;
+    public abstract void createBook(String author, String title) throws LibException;
 
     public abstract List<MyBook> allBooks() throws LibException;
      

@@ -5,7 +5,9 @@
  */
 package lib2017.richclient.view;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
+import lib2017.richclient.controller.CreateBookAction;
 import lib2017.richclient.controller.DeleteBookAction;
 import lib2017.richclient.controller.ExitAction;
 
@@ -17,7 +19,10 @@ public class LibToolBar extends HBox {
 
     public LibToolBar() {
         super(ExitAction.instance.createButton(),
+                CreateBookAction.instance.createButton(),
                 DeleteBookAction.instance.createButton());
+        setPadding(new Insets(5));
+        setSpacing(5);
     }
 
 }

@@ -40,13 +40,15 @@ public class DerbyDAOService extends DAOService {
                     Statement stm = conn.createStatement();
                     stm.executeUpdate("CREATE TABLE BOOKS"
                             + "(ID INT NOT NULL GENERATED ALWAYS AS IDENTITY,"
+                            + "AUTHOR   VARCHAR(50),"
                             + "TITLE   VARCHAR(50),"
                             + "PRIMARY KEY (ID))");
+                    LOG.info("TABLE BOOKS generated");
 
                 }
                 derbyBookDAO = new DerbyMyBookDAO(conn);
             } catch (SQLException ex) {
-                Logger.getLogger(DerbyDAOService.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, null, ex);
             }
         }
         return derbyBookDAO;

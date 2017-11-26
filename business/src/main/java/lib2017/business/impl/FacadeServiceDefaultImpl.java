@@ -14,8 +14,8 @@ public class FacadeServiceDefaultImpl extends FacadeService {
     }
 
     @Override
-    public void createBook(String title) throws LibException {
-        DAOService.service().getMyBookDAO().create(title);
+    public void createBook(String author, String title) throws LibException {
+        DAOService.service().getMyBookDAO().create(author, title);
     }
 
     @Override
