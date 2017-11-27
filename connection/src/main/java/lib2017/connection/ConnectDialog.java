@@ -1,12 +1,9 @@
-package lib2017.richclient.dialogs;
+package lib2017.connection;
 
 import java.util.Optional;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -14,16 +11,17 @@ import javafx.scene.layout.VBox;
 import lib2017.business.FacadeService;
 import lib2017.richclient.LibStateObservable;
 import lib2017.richclient.MainWindow;
+import lib2017.richclient.dialogs.AbstractDialog;
 import lib2017.utils.LibException;
 import lib2017.utils.Messages;
 
-public final class CreateBookDialog extends AbstractDialog {
+public final class ConnectDialog extends AbstractDialog {
 
-    private TextField title;
-    private TextField author;
+    private TextField host;
+    private TextField port;
 
-    public CreateBookDialog() {
-        setTitle(Messages.CREATE_BOOK.getMessage());
+    public ConnectDialog() {
+        setTitle(Messages.CONNECT.getMessage());
         getDialogPane().setContent(createContent());
         getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL, ButtonType.OK);
         validate();
@@ -34,10 +32,10 @@ public final class CreateBookDialog extends AbstractDialog {
         gb.setPadding(new Insets(5));
         gb.setHgap(5);
         gb.setVgap(5);
-        gb.add(new Label(Messages.AUTHOR.getMessage() + ":"), 0, 0);
-        gb.add(author = createTF(), 1, 0);
-        gb.add(new Label(Messages.TITLE.getMessage() + ":"), 0, 1);
-        gb.add(title = createTF(), 1, 1);
+        gb.add(new Label(Messages.HOST.getMessage() + ":"), 0, 0);
+        gb.add(port = createTF(), 1, 0);
+        gb.add(new Label(Messages.PORT.getMessage() + ":"), 0, 1);
+        gb.add(host = createTF(), 1, 1);
         return new VBox(gb, errorPane);
     }
 
@@ -50,7 +48,7 @@ public final class CreateBookDialog extends AbstractDialog {
             if (bt.get() == ButtonType.CANCEL) {
                 return;
             }
-            FacadeService.service().createBook(author.getText(), title.getText());
+            FacadeService.service().createBook(port.getText(), host.getText());
             LibStateObservable.instance.notif();
         } catch (LibException ex) {
             MainWindow.error(ex);
@@ -60,10 +58,10 @@ public final class CreateBookDialog extends AbstractDialog {
     @Override
     protected void validate() {
         StringBuilder sb = new StringBuilder();
-        if (author.getText().isEmpty()) {
+        if (port.getText().isEmpty()) {
             sb.append(Messages.EMPTY_AUTHOR.getMessage());
         }
-        if (title.getText().isEmpty()) {
+        if (host.getText().isEmpty()) {
             sb.append('\n' + Messages.EMPTY_TITLE.getMessage());
         }
         errorPane.setText(sb.toString());

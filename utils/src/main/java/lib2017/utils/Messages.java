@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public enum Messages {
 
     Library,
-    Book, FILE, BOOKS, EXIT, TITLE, CREATE_BOOK, EMPTY_TITLE, AUTHOR, EMPTY_AUTHOR, DELETE_BOOK, ID;
+    Book, FILE, BOOKS, EXIT, TITLE, CREATE_BOOK, EMPTY_TITLE, AUTHOR, EMPTY_AUTHOR, DELETE_BOOK, ID, CONNECT, HOST, PORT, CONNECTION;
     Locale l = new Locale("cs");//Locale.US;
 
     public String getMessage() {

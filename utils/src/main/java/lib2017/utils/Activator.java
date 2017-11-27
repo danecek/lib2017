@@ -1,26 +1,29 @@
 package lib2017.utils;
 
 import java.util.logging.Logger;
-import org.apache.felix.dm.DependencyActivatorBase;
-import org.apache.felix.dm.DependencyManager;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator extends DependencyActivatorBase {
+public class Activator implements BundleActivator {
 
     private static final Logger LOG = Logger.getLogger(Activator.class.getName());
 
+//    @Override
+//    public void init(BundleContext context, DependencyManager manager) throws Exception {
+//        manager.add(createComponent()
+//                .setInterface(HelloService.class.getName(), null)
+//                .setImplementation(HelloServiceImpl.class)
+//        );
+//        LOG.info("init");
+//    }
     @Override
-    public void init(BundleContext context, DependencyManager manager) throws Exception {
-        manager.add(createComponent()
-                .setInterface(HelloService.class.getName(), null)
-                .setImplementation(HelloServiceImpl.class)
-        );
-        LOG.info("init");
+    public void stop(BundleContext bc) throws Exception {
+        //    LOG.info("");
     }
 
     @Override
-    public void stop(BundleContext bc) throws Exception {
-        LOG.info("");
+    public void start(BundleContext bc) throws Exception {
+        //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

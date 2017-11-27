@@ -19,6 +19,9 @@
         <module>business</module>
         <module>richclient</module>
         <module>derbyDAO</module>
+        <module>protocol</module>
+        <module>proxy</module>
+        <module>connection</module>
     </modules>
     <dependencies>
         <dependency>

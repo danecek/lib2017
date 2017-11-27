@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Menu;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -34,6 +35,7 @@ public class MainWindow extends Stage {
         a.setContentText(ex.toString());
     }
     BookPane bookPane;
+    LibMenuBar libMenuBar;
 
     public MainWindow() {
         instance = this;
@@ -45,7 +47,7 @@ public class MainWindow extends Stage {
             }
         });
         bookPane = new BookPane();
-        Parent root = new VBox(new LibMenuBar(), new LibToolBar(), bookPane);
+        Parent root = new VBox(libMenuBar = new LibMenuBar(), new LibToolBar(), bookPane);
         Scene s = new Scene(root, 800, 400);
         setScene(s);
         show();
@@ -60,5 +62,9 @@ public class MainWindow extends Stage {
 
     public BookPane getBookPane() {
         return bookPane;
+    }
+    
+    public void addMenu(Menu menu) {
+        libMenuBar.getMenus().add(menu);
     }
 }

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>lib2017</artifactId>
         <groupId>biapj</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>model</artifactId>
+    <artifactId>proxy</artifactId>
     <packaging>bundle</packaging>
+    <name>proxy 2017</name>
 
-    <name>model 2017</name>
     <build>
         <plugins>
             <plugin>
@@ -18,9 +20,9 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>lib2017.model.Activator</Bundle-Activator>
-                        <Export-Package >lib2017.model</Export-Package>
-                        <Private-Package>lib2017.model.*</Private-Package>
+                        <Bundle-Activator>lib2017.modultemplate.Activator</Bundle-Activator>
+                        <Export-Package >lib2017.proxy</Export-Package>
+                        <Private-Package>lib2017.proxy.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>
@@ -29,7 +31,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>utils</artifactId>
+            <artifactId>business</artifactId>
             <version>${project.version}</version>
             <exclusions>
                 <exclusion>
@@ -42,22 +44,15 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>protocol</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>connection</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>cobertura</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
-
 </project>
