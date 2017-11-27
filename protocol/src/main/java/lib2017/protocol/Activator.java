@@ -1,4 +1,4 @@
-package lib2017.help;
+package lib2017.protocol;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

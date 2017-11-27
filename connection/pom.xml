@@ -21,7 +21,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>lib2017.connection.Activator</Bundle-Activator>
-                        <Export-Package />
+                        <Export-Package >lib2017.connection</Export-Package>
+                        <Private-Package>lib2017.connection.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

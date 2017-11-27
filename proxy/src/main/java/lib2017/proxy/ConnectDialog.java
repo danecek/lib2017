@@ -64,8 +64,7 @@ public final class ConnectDialog extends LibAbstractDialog {
         StringBuilder sb = new StringBuilder();
         try {
             port = Integer.valueOf(portTf.getText());
-        } catch (NumberFormatException ex) {
-
+        } catch (NumberFormatException | NullPointerException ex) {
             sb.append(Messages.EMPTY_AUTHOR.getMessage());
         }
         if (host.getText().isEmpty()) {
