@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lib2017.connection;
+package lib2017.proxy;
 
 import javafx.scene.control.Menu;
 import lib2017.utils.Messages;
 
-/**
- *
- * @author danecek
- */
-public class ConnectMenu extends Menu {
+public class ConnectionMenu extends Menu {
 
-    public ConnectMenu() {
+    public ConnectionMenu() {
         super(Messages.CONNECTION.getMessage());
-        getItems().addAll(ConnectAction.instance.createMenuItem(),
-                DisconnectAction.instance.createMenuItem());
+        getItems().addAll(ConnectAction.instance.createMenuItem());
     }
-
+    
 }

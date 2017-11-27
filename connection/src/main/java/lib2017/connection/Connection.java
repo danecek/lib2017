@@ -8,9 +8,10 @@ package lib2017.connection;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lib2017.protocol.AbstractCommand;
+import lib2017.protocol.AbstractLibCommand;
 import lib2017.utils.LibException;
 
 /**
@@ -24,15 +25,27 @@ public class Connection {
     ObjectOutputStream oos;
     ObjectInputStream ois;
 
-    public <T> T send(AbstractCommand comm) throws LibException {
+    public void connect(String host, int port) throws LibException {
+        try {
+            Socket s = new Socket(host, port);
+            oos = new ObjectOutputStream(s.getOutputStream());
+            ois = new ObjectInputStream(s.getInputStream());
+        } catch (IOException ex) {
+            throw new LibException(ex);
+        }
+
+    }
+
+    public <T> T sendCommand(AbstractLibCommand comm) throws LibException {
         try {
             oos.writeObject(comm);
             oos.flush();
             Object result = ois.readObject();
-            if (result instanceof Exception) {
+            if (result instanceof LibException) {
                 throw (LibException) result;
             }
             return (T) result;
+
         } catch (IOException ex) {
             throw new LibException(ex);
         } catch (ClassNotFoundException ex) {
@@ -42,7 +55,7 @@ public class Connection {
 
     }
 
-    void disconnect() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void disconnect() {
+
     }
 }

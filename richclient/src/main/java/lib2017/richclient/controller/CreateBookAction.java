@@ -5,6 +5,7 @@
  */
 package lib2017.richclient.controller;
 
+import lib2017.richclient.LibAbstractAction;
 import lib2017.richclient.dialogs.CreateBookDialog;
 import lib2017.utils.Messages;
 

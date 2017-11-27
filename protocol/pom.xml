@@ -21,8 +21,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>lib2017.protocol.Activator</Bundle-Activator>
-                        <Export-Package >lib2017.protocol</Export-Package>
-                        <Private-Package>lib2017.protocol.*</Private-Package>
+                        <Export-Package />
                     </instructions>
                 </configuration>
             </plugin>
@@ -31,18 +30,13 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>business</artifactId>
             <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>org.apache.felix.dependencymanager</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>org.apache.felix.dependencymanager.annotation</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 </project>

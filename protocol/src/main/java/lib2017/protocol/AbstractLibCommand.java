@@ -5,18 +5,13 @@
  */
 package lib2017.protocol;
 
-import lib2017.business.FacadeService;
+import java.io.Serializable;
 import lib2017.utils.LibException;
 
-/**
- *
- * @author danecek
- */
-public class AllBooksCommand extends AbstractCommand {
 
-    @Override
-    public <T> T execute() throws LibException {
-        return (T) FacadeService.service().allBooks();
-    }
-
+public abstract class AbstractLibCommand implements Serializable{
+    
+    abstract <T> T execute() throws LibException;
+    public static final String OK ="ok";
+    
 }

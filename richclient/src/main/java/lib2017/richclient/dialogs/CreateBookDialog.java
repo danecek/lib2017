@@ -1,12 +1,10 @@
 package lib2017.richclient.dialogs;
 
+import lib2017.richclient.LibAbstractDialog;
 import java.util.Optional;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -17,7 +15,7 @@ import lib2017.richclient.MainWindow;
 import lib2017.utils.LibException;
 import lib2017.utils.Messages;
 
-public final class CreateBookDialog extends AbstractDialog {
+public final class CreateBookDialog extends LibAbstractDialog {
 
     private TextField title;
     private TextField author;

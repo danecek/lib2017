@@ -1,5 +1,6 @@
-package lib2017.connection;
+package lib2017.proxy;
 
+import lib2017.richclient.LibAbstractDialog;
 import java.util.Optional;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -9,16 +10,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import lib2017.business.FacadeService;
+import lib2017.connection.Connection;
 import lib2017.richclient.LibStateObservable;
 import lib2017.richclient.MainWindow;
-import lib2017.richclient.dialogs.AbstractDialog;
 import lib2017.utils.LibException;
 import lib2017.utils.Messages;
 
-public final class ConnectDialog extends AbstractDialog {
+public final class ConnectDialog extends LibAbstractDialog {
 
     private TextField host;
-    private TextField port;
+    private TextField portTf;
+    int port;
 
     public ConnectDialog() {
         setTitle(Messages.CONNECT.getMessage());
@@ -33,9 +35,11 @@ public final class ConnectDialog extends AbstractDialog {
         gb.setHgap(5);
         gb.setVgap(5);
         gb.add(new Label(Messages.HOST.getMessage() + ":"), 0, 0);
-        gb.add(port = createTF(), 1, 0);
+        gb.add(portTf = createTF(), 1, 0);
+        portTf.setText("3333");
         gb.add(new Label(Messages.PORT.getMessage() + ":"), 0, 1);
         gb.add(host = createTF(), 1, 1);
+        host.setText("host");
         return new VBox(gb, errorPane);
     }
 
@@ -48,7 +52,7 @@ public final class ConnectDialog extends AbstractDialog {
             if (bt.get() == ButtonType.CANCEL) {
                 return;
             }
-            FacadeService.service().createBook(port.getText(), host.getText());
+            Connection.instance.connect(portTf.getText(), port);
             LibStateObservable.instance.notif();
         } catch (LibException ex) {
             MainWindow.error(ex);
@@ -58,7 +62,10 @@ public final class ConnectDialog extends AbstractDialog {
     @Override
     protected void validate() {
         StringBuilder sb = new StringBuilder();
-        if (port.getText().isEmpty()) {
+        try {
+            port = Integer.valueOf(portTf.getText());
+        } catch (NumberFormatException ex) {
+
             sb.append(Messages.EMPTY_AUTHOR.getMessage());
         }
         if (host.getText().isEmpty()) {

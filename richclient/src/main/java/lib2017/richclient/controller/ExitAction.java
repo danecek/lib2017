@@ -5,6 +5,7 @@
  */
 package lib2017.richclient.controller;
 
+import lib2017.richclient.LibAbstractAction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lib2017.richclient.MainWindow;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lib2017.richclient.dialogs;
+package lib2017.richclient;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,15 +13,11 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-/**
- *
- * @author danecek
- */
-public abstract class AbstractDialog extends Dialog<ButtonType> implements ChangeListener<Object> {
+public abstract class LibAbstractDialog extends Dialog<ButtonType> implements ChangeListener<Object> {
 
     protected Label errorPane = new Label();
 
-    public AbstractDialog() {
+    public LibAbstractDialog() {
         errorPane.setStyle(" -fx-text-fill:red; -fx-font-weight:bold");
     }
 

@@ -8,7 +8,11 @@ package lib2017.protocol;
 import lib2017.business.FacadeService;
 import lib2017.utils.LibException;
 
-public class CreateBookCommand extends AbstractCommand {
+/**
+ *
+ * @author danecek
+ */
+public class CreateBookCommand extends AbstractLibCommand {
 
     private String author;
     private String title;
@@ -18,41 +22,8 @@ public class CreateBookCommand extends AbstractCommand {
         this.title = title;
     }
 
-    /**
-     * @return the author
-     */
-    public String getAuthor() {
-        return author;
-    }
-
-    /**
-     * @param author the author to set
-     */
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    /**
-     * @return the title
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * @param title the title to set
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     @Override
-    public String toString() {
-        return "CreateBookCommand{" + "author=" + author + ", title=" + title + '}';
-    }
-
-    @Override
-    public <T> T execute() throws LibException {
+    <T> T execute() throws LibException {
         FacadeService.service().createBook(author, title);
         return (T) OK;
     }

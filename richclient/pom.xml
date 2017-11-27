@@ -21,7 +21,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>lib2017.richclient.Activator</Bundle-Activator>
-                        <Export-Package />
+                        <Export-Package >lib2017.richclient</Export-Package>
+                        <Private-Package>lib2017.richclient.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>
