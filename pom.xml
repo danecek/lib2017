@@ -22,6 +22,7 @@
         <module>proxy</module>
         <module>protocol</module>
         <module>connection</module>
+        <module>binserver</module>
     </modules>
     <dependencies>
         <dependency>

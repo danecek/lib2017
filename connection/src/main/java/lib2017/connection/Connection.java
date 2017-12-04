@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lib2017.model.MyBook;
 import lib2017.protocol.AbstractLibCommand;
 import lib2017.utils.LibException;
 
@@ -24,12 +25,17 @@ public class Connection {
 
     ObjectOutputStream oos;
     ObjectInputStream ois;
+    boolean isConnected = false;
+    static Class[] classes = {MyBook.class};
 
     public void connect(String host, int port) throws LibException {
         try {
+            LOG.info(host + port);
             Socket s = new Socket(host, port);
+
             oos = new ObjectOutputStream(s.getOutputStream());
             ois = new ObjectInputStream(s.getInputStream());
+            isConnected = true;
         } catch (IOException ex) {
             throw new LibException(ex);
         }
@@ -37,7 +43,12 @@ public class Connection {
     }
 
     public <T> T sendCommand(AbstractLibCommand comm) throws LibException {
+
+        if (!isConnected) {
+            throw new LibException("not connected");
+        }
         try {
+            LOG.info(comm.toString());
             oos.writeObject(comm);
             oos.flush();
             Object result = ois.readObject();
@@ -45,7 +56,6 @@ public class Connection {
                 throw (LibException) result;
             }
             return (T) result;
-
         } catch (IOException ex) {
             throw new LibException(ex);
         } catch (ClassNotFoundException ex) {
@@ -54,8 +64,9 @@ public class Connection {
         }
 
     }
+    private static final Logger LOG = Logger.getLogger(Connection.class.getName());
 
     public void disconnect() {
-
+        isConnected = false;
     }
 }

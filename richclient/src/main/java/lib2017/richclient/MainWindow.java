@@ -32,7 +32,9 @@ public class MainWindow extends Stage {
 
     public static void error(LibException ex) {
         Alert a = new Alert(Alert.AlertType.ERROR);
-        a.setContentText(ex.toString());
+        a.resizableProperty().set(true);
+        a.setContentText(ex.getMessage());
+        a.showAndWait();
     }
     BookPane bookPane;
     LibMenuBar libMenuBar;

@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import lib2017.business.FacadeService;
 import lib2017.connection.Connection;
 import lib2017.richclient.LibStateObservable;
 import lib2017.richclient.MainWindow;
@@ -18,7 +17,7 @@ import lib2017.utils.Messages;
 
 public final class ConnectDialog extends LibAbstractDialog {
 
-    private TextField host;
+    private TextField hostTf;
     private TextField portTf;
     int port;
 
@@ -36,10 +35,10 @@ public final class ConnectDialog extends LibAbstractDialog {
         gb.setVgap(5);
         gb.add(new Label(Messages.HOST.getMessage() + ":"), 0, 0);
         gb.add(portTf = createTF(), 1, 0);
-        portTf.setText("3333");
         gb.add(new Label(Messages.PORT.getMessage() + ":"), 0, 1);
-        gb.add(host = createTF(), 1, 1);
-        host.setText("host");
+        gb.add(hostTf = createTF(), 1, 1);
+        hostTf.setText("localhost");
+        portTf.setText("3333");
         return new VBox(gb, errorPane);
     }
 
@@ -52,7 +51,7 @@ public final class ConnectDialog extends LibAbstractDialog {
             if (bt.get() == ButtonType.CANCEL) {
                 return;
             }
-            Connection.instance.connect(portTf.getText(), port);
+            Connection.instance.connect(hostTf.getText(), port);
             LibStateObservable.instance.notif();
         } catch (LibException ex) {
             MainWindow.error(ex);
@@ -65,10 +64,10 @@ public final class ConnectDialog extends LibAbstractDialog {
         try {
             port = Integer.valueOf(portTf.getText());
         } catch (NumberFormatException | NullPointerException ex) {
-            sb.append(Messages.EMPTY_AUTHOR.getMessage());
+            sb.append(Messages.INVALID_PORT.getMessage());
         }
-        if (host.getText().isEmpty()) {
-            sb.append('\n' + Messages.EMPTY_TITLE.getMessage());
+        if (hostTf.getText().isEmpty()) {
+            sb.append('\n' + Messages.EMPTY_HOST.getMessage());
         }
         errorPane.setText(sb.toString());
 

@@ -5,13 +5,15 @@
  */
 package lib2017.protocol;
 
-import java.io.Serializable;
 import lib2017.utils.LibException;
 
 
-public abstract class AbstractLibCommand implements Serializable{
-    
-    public abstract <T> T execute() throws LibException;
-    public static final String OK ="ok";
-    
+public class LogoutCommand extends AbstractLibCommand {
+
+    @Override
+    public <T> T execute() throws LibException {
+
+        return (T) OK;
+    }
+
 }

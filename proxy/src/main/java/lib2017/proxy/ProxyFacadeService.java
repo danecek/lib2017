@@ -9,6 +9,7 @@ import java.util.List;
 import lib2017.business.FacadeService;
 import lib2017.connection.Connection;
 import lib2017.model.MyBook;
+import lib2017.protocol.AllBooksCommand;
 import lib2017.protocol.CreateBookCommand;
 import lib2017.utils.LibException;
 
@@ -25,12 +26,12 @@ public class ProxyFacadeService extends FacadeService {
 
     @Override
     public List<MyBook> allBooks() throws LibException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Connection.instance.sendCommand(new AllBooksCommand());
     }
 
     @Override
     public void deleteBook(MyBook book) throws LibException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     //   Connection.instance.sendCommand(new CreateBookCommand(author, title));
     }
 
 }
