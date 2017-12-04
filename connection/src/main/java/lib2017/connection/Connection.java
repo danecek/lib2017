@@ -39,7 +39,6 @@ public class Connection {
         } catch (IOException ex) {
             throw new LibException(ex);
         }
-
     }
 
     public <T> T sendCommand(AbstractLibCommand comm) throws LibException {
