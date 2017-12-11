@@ -5,9 +5,9 @@
  */
 package lib2017.proxy;
 
-import java.util.List;
+import lib2017.business.Books;
 import lib2017.business.FacadeService;
-import lib2017.connection.Connection;
+import lib2017.connection.ConnectionService;
 import lib2017.model.MyBook;
 import lib2017.protocol.AllBooksCommand;
 import lib2017.protocol.CreateBookCommand;
@@ -21,12 +21,12 @@ public class ProxyFacadeService extends FacadeService {
 
     @Override
     public void createBook(String author, String title) throws LibException {
-        Connection.instance.sendCommand(new CreateBookCommand(author, title));
+        ConnectionService.service().sendCommand(new CreateBookCommand(author, title));
     }
 
     @Override
-    public List<MyBook> allBooks() throws LibException {
-        return Connection.instance.sendCommand(new AllBooksCommand());
+    public Books allBooks() throws LibException {
+        return ConnectionService.service().sendCommand(new AllBooksCommand());
     }
 
     @Override

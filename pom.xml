@@ -23,6 +23,7 @@
         <module>protocol</module>
         <module>connection</module>
         <module>binserver</module>
+        <module>connectionText</module>
     </modules>
     <dependencies>
         <dependency>

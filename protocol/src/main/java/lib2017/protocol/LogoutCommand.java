@@ -5,9 +5,10 @@
  */
 package lib2017.protocol;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import lib2017.utils.LibException;
 
-
+@XmlRootElement
 public class LogoutCommand extends AbstractLibCommand {
 
     @Override

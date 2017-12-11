@@ -7,8 +7,6 @@ package lib2017.business;
 
 import java.util.List;
 import lib2017.business.impl.FacadeServiceDefaultImpl;
-import lib2017.integration.DAOService;
-import lib2017.integration.impl.DAOServiceDefaultImpl;
 import lib2017.model.MyBook;
 import lib2017.utils.LibException;
 import org.osgi.framework.BundleContext;
@@ -38,7 +36,7 @@ public abstract class FacadeService {
 
     public abstract void createBook(String author, String title) throws LibException;
 
-    public abstract List<MyBook> allBooks() throws LibException;
+    public abstract Books allBooks() throws LibException;
 
     public abstract void deleteBook(MyBook book) throws LibException;
 

@@ -9,11 +9,21 @@ import java.io.Serializable;
 
 public class AbstrId<T extends AbstrId> implements Comparable<T>, Serializable {
 
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public AbstrId(int id) {
         this.id = id;
     }
 
-    final int id;
+    public AbstrId() {
+    }
+
+    private int id;
 
     @Override
     public boolean equals(Object that) {
@@ -36,7 +46,7 @@ public class AbstrId<T extends AbstrId> implements Comparable<T>, Serializable {
 
     @Override
     public int compareTo(T that) {
-        return this.id - that.id;
+        return this.id - that.getId();
     }
 
     public int getId() {

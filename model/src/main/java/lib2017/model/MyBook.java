@@ -5,6 +5,9 @@ import java.io.Serializable;
 public class MyBook implements Serializable {
 
     private BookId id;
+
+    public MyBook() {
+    }
     private String title;
     private String author;
 

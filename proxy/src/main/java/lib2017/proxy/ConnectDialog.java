@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import lib2017.connection.Connection;
+import lib2017.connection.ConnectionService;
 import lib2017.richclient.LibStateObservable;
 import lib2017.richclient.MainWindow;
 import lib2017.utils.LibException;
@@ -51,7 +51,7 @@ public final class ConnectDialog extends LibAbstractDialog {
             if (bt.get() == ButtonType.CANCEL) {
                 return;
             }
-            Connection.instance.connect(hostTf.getText(), port);
+            ConnectionService.service().connect(hostTf.getText(), port);
             LibStateObservable.instance.notif();
         } catch (LibException ex) {
             MainWindow.error(ex);

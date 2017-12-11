@@ -49,7 +49,7 @@ public final class BookPane extends TitledPane implements Observer {
     }
 
     public void refresh() throws LibException {
-        books.setAll(FacadeService.service().allBooks());
+        books.setAll(FacadeService.service().allBooks().getBooks());
     }
 
     public ObservableList<MyBook> getSelectedBooks() {

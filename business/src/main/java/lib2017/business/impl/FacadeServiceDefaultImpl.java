@@ -2,6 +2,7 @@
 package lib2017.business.impl;
 
 import java.util.List;
+import lib2017.business.Books;
 import lib2017.business.FacadeService;
 import lib2017.integration.DAOService;
 import lib2017.model.MyBook;
@@ -19,8 +20,8 @@ public class FacadeServiceDefaultImpl extends FacadeService {
     }
 
     @Override
-    public List<MyBook> allBooks() throws LibException {
-        return DAOService.service().getMyBookDAO().all();
+    public Books allBooks() throws LibException {
+        return new Books(DAOService.service().getMyBookDAO().all());
     }
 
     @Override

@@ -5,11 +5,14 @@
  */
 package lib2017.model;
 
-
-public class BookId extends AbstrId<BookId>  {
+public class BookId extends AbstrId<BookId> {
 
     public BookId(int id) {
         super(id);
+    }
+
+    public BookId() {
+        super();
     }
 
 }
