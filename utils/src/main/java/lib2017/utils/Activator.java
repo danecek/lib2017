@@ -8,14 +8,6 @@ public class Activator implements BundleActivator {
 
     private static final Logger LOG = Logger.getLogger(Activator.class.getName());
 
-//    @Override
-//    public void init(BundleContext context, DependencyManager manager) throws Exception {
-//        manager.add(createComponent()
-//                .setInterface(HelloService.class.getName(), null)
-//                .setImplementation(HelloServiceImpl.class)
-//        );
-//        LOG.info("init");
-//    }
     @Override
     public void stop(BundleContext bc) throws Exception {
         //    LOG.info("");
